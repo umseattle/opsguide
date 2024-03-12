@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Organizations and Abbreviations</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+</head>
+<body>
+
+<nav>
+<ul>
+<li><a href="detailed-table-of-contents.html" class="wiki-link">ToC</a> </li>
+<li><a href="index-of-key-terms.html" class="wiki-link">Index</a> </li>
+<li><a href="search.html" class="wiki-link">Search</a> </li>
+</ul>
+
+
+</nav>
+
+<main>
+<p> <a href="u-m-seattle-operations-guide.html" class="nav-link">U-M Seattle Operations Guide</a>&#160;&#8593;</p><h3 id="organizations-and-abbreviations">2 Organizations and Abbreviations</h3>
+<p>It is important to establish a few organizational definitions, along with commonly used abbreviations. (BTW, you can click on a column heading to sort the table by that column.) </p><script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  var firstElement = "";
+  var nextElement = "";
+  var firstLowered = "";
+  var nextLowered = "";
+  var firstNumber = 0;
+  var nextNumber = 0;
+  var firstValue = 0;
+  var nextValue = 0;
+  table = document.getElementById("orgs-table");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc";
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      firstElement = rows[i].getElementsByTagName("TD")[n];
+      nextElement = rows[i + 1].getElementsByTagName("TD")[n];
+      firstLowered = firstElement.innerHTML.toLowerCase();
+      nextLowered = nextElement.innerHTML.toLowerCase();
+      firstNumber = Number(firstLowered);
+      nextNumber = Number(nextLowered);
+      if (isNaN(firstLowered) || isNaN(nextLowered)) {
+        x = firstLowered;
+        y = nextLowered;
+      } else {
+        x = firstNumber;
+        y = nextNumber;
+      }
+      
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+      if (dir == "asc") {
+        if (x > y) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x < y) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount ++;
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+
+
+</script>
+
+
+<table id="orgs-table">
+<tr>
+<th onclick="sortTable(0)">
+ Abbreviation </th>
+<th onclick="sortTable(1)">
+ Name </th>
+<th onclick="sortTable(2)">
+ Notes </th>
+ </tr>
+<tr>
+<td>
+ U-M          </td>
+<td>
+ <a href="https://umich.edu" class="ext-link" target="_blank" rel="noopener">University of Michigan</a> </td>
+<td>
+ The hyphen is important when using the abbreviation. </td>
+</tr>
+<tr>
+<td>
+ AAUM </td>
+<td>
+ <a href="https://alumni.umich.edu" class="ext-link" target="_blank" rel="noopener">Alumni Association of the University of Michigan</a> </td>
+<td>
+ The AAUM is a nonprofit membership organization founded in 1854 and incorporated in 1897. It is tax-exempt under section 501(c)(3) of the Internal Revenue Code. Though a committed partner of the University of Michigan, the AAUM is an independent organization and receives no funding from the University. Its primary source of funding is membership dues. </td>
+</tr>
+<tr>
+<td>
+ AD </td>
+<td>
+ <a href="https://mgoblue.com" class="ext-link" target="_blank" rel="noopener">Athletic Department</a> </td>
+<td>
+ Although Michigan athletics are part of the University, it is important to realize that the AD often operates as a peer to U-M academics and to AAUM. </td>
+</tr>
+<tr>
+<td>
+ OUD </td>
+<td>
+ Office of University Development </td>
+<td>
+ U-M has a network of development (i.e. fundraising) officers, some of whom are dedicated to a particular school (such as Engineering), while others represent the University as a whole. U-M has a full-time development officer working and living in the Seattle area. </td>
+</tr>
+<tr>
+<td>
+ Club </td>
+<td>
+ <a href="https://umseattle.org" class="ext-link" target="_blank" rel="noopener">University of Michigan Club of Seattle</a> </td>
+<td>
+ As in &#8220;Our Club&#8221; or &#8220;The Club&#8221; &#8211; Our local Club is an affiliate of the Alumni Association of the University of Michigan, and is chartered by the AAUM, but is a separate organization from the AAUM, in terms of both legal and financial considerations. Our Club is a  <a href="https://en.wikipedia.org/wiki/501(c)(3)_organization" class="ext-link" target="_blank" rel="noopener">501(c)(3)</a> nonprofit organization <a href="https://ccfs.sos.wa.gov/#/BusinessSearch/BusinessInformation" class="ext-link" target="_blank" rel="noopener">incorporated in the State of Washington</a> in 2017. Washington State has assigned the Club the Unified Business Identifier (UBI) number of 604 115 028. The U-M Club of Seattle is over 100 years old, and is the oldest U-M Alumni Club outside of the state of Michigan. </td>
+</tr>
+</table>
+
+<p>The AAUM is the primary source of funding for our club. As stated in our bylaws: </p>
+
+<blockquote>
+
+<p>The Club does not charge membership dues exclusive of AAUM. </p>
+</blockquote>
+
+<p>As leaders of a regional club, we generally work supportively with all members of the greater University of Michigan community, including collaboration with development personnel from AAUM, U-M and from the individual schools within the University. </p>
+
+<p>We also occasionally collaborate with the Michigan Ross Alumni Club of Seattle, which is yet another organization that is separate from our Club. </p>
+
+<hr />
+<div>
+
+<p>Next: <a href="purpose-of-the-club.html" class="nav-link">Purpose of the Club</a></p></div>
+
+
+</main>
+</body>
+</html>

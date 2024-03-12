@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Search</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+</head>
+<body>
+
+<main>
+<p>14 <a href="reference.html" class="nav-link">Reference</a>&#160;&#8593;</p><h4 id="search">14.7 Search</h4>
+<div class="search-page">
+
+<div class="search-form">
+
+<form action="https://duckduckgo.com/" method="get" id="form-search">
+
+<label for="input-search">Enter your search term:</label>
+
+<input type="text" name="q" id="input-search">
+
+<input type="hidden" name="sites">
+
+<button type="submit" class="btn btn-primary" id="submit-search">Search</button></form></div>
+
+<div id="search-results">
+</div>
+</div>
+<script>
+let searchIndex = [ 
+    { 
+        title: "U-M Seattle Operations Guide", 
+        date: "", 
+        url: "u-m-seattle-operations-guide.html", 
+        summary: "<p>&#8211; Draft &#8211; </p>  <p>Written by Herb Bowie </p>  <p>Dated March 1,&#8230; </p>", 
+        content: " Draft Written by Herb Bowie Dated March 1 2024"
+    }, 
+    { 
+        title: "Introduction to the Guide", 
+        date: "", 
+        url: "introduction-to-the-guide.html", 
+        summary: "<p>This document provides the information needed for the ongoing operations of the University of Michigan Club of Seattle. </p>", 
+        content: "This document provides the information needed for the ongoing operations of the University of Michigan Club of Seattle The information provided here supplements and expands on the Club Bylaws https alumni umich edu communities clubs umseattle bylaws This information also supplements the Club Affiliate Leader Guide https alumni umich edu communities clubs club affiliate leader resources provided by the Alumni Association"
+    }, 
+    { 
+        title: "Organizations and Abbreviations", 
+        date: "", 
+        url: "organizations-and-abbreviations.html", 
+        summary: "<p>It is important to establish a few organizational definitions, along with commonly used abbreviations. </p>", 
+        content: "It is important to establish a few organizational definitions along with commonly used abbreviations BTW you can click on a column heading to sort the table by that column sort table orgs table | Abbreviation | Name | Notes | | | | | | U M | University of Michigan https umich edu | The hyphen is important when using the abbreviation | AAUM | Alumni Association of the University of Michigan https alumni umich edu | The AAUM is a nonprofit membership organization founded in 1854 and incorporated in 1897 It is tax exempt under section 501 c 3 of the Internal Revenue Code Though a committed partner of the University of Michigan the AAUM is an independent organization and receives no funding from the University Its primary source of funding is membership dues | AD | Athletic Department https mgoblue com | Although Michigan athletics are part of the University it is important to realize that the AD often operates as a peer to U M academics and to AAUM | OUD | Office of University Development | U M has a network of development i e fundraising officers some of whom are dedicated to a particular school such as Engineering while others represent the University as a whole U M has a full time development officer working and living in the Seattle area | Club | University of Michigan Club of Seattle https umseattle org | As in Our Club or The Club Our local Club is an affiliate of the Alumni Association of the University of Michigan and is chartered by the AAUM but is a separate organization from the AAUM in terms of both legal and financial considerations Our Club is a 501 c 3 501c3 nonprofit organization incorporated in the State of Washington wacorps in 2017 Washington State has assigned the Club the Unified Business Identifier UBI number of 604 115 028 The U M Club of Seattle is over 100 years old and is the oldest U M Alumni Club outside of the state of Michigan The AAUM is the primary source of funding for our club As stated in our bylaws > The Club does not charge membership dues exclusive of AAUM As leaders of a regional club we generally work supportively with all members of the greater University of Michigan community including collaboration with development personnel from AAUM U M and from the individual schools within the University We also occasionally collaborate with the Michigan Ross Alumni Club of Seattle which is yet another organization that is separate from our Club 501c3 https en wikipedia org wiki 501 c 3 organization aaum http alumni umich edu wacorps https ccfs sos wa gov BusinessSearch BusinessInformation"
+    }, 
+    { 
+        title: "Purpose of the Club", 
+        date: "", 
+        url: "purpose-of-the-club.html", 
+        summary: "<p>As stated in the Club Bylaws: </p>  <blockquote>  <p>The Club is an affiliate of, and chartered by, the Alumni Association of the University of Michigan, an educational, nonprofit membership organization of graduates and friends of the University of Michigan. </p> </blockquote> ", 
+        content: "As stated in the Club Bylaws > The Club is an affiliate of and chartered by the Alumni Association of the University of Michigan an educational nonprofit membership organization of graduates and friends of the University of Michigan > > The Club and AAUM bring alumni together in support of each other and to promote the objectives of the University of Michigan through the establishment and maintenance of contact among the University its graduates and present and prospective students > > Additionally the Club encourages and supports the matriculation of local students at the University of Michigan through the administration and continued development of the Roby Burley Scholarship fund"
+    }, 
+    { 
+        title: "What's Special about Seattle?", 
+        date: "", 
+        url: "whats-special-about-seattle.html", 
+        summary: "<p>It&#8217;s important to note some special attributes of our Seattle club, compared to other alumni clubs around the country. </p>", 
+        content: "It s important to note some special attributes of our Seattle club compared to other alumni clubs around the country We are categorized as a Tier One Club by the AAUM We are about as far from Ann Arbor as you can get in the continental US so it is relatively difficult for us to get speakers from campus to come out to the area Since Seattle is somewhat smaller as well as cooler and wetter than many other West Coast cities this also makes it harder to entice potential speakers to visit our part of the country On the other hand Seattle is a popular place to live and to visit and has a very dynamic and prosperous economy Seattle s U M alumni population is fairly large and growing relatively quickly compared to some older and smaller cities"
+    }, 
+    { 
+        title: "Club Membership", 
+        date: "", 
+        url: "club-membership.html", 
+        summary: "<p>All current members of AAUM in the Club&#8217;s geographic area (as determined by AAUM) are automatically members of the Club. The Club does not charge membership dues exclusive of AAUM. </p>", 
+        content: "All current members of AAUM in the Club s geographic area as determined by AAUM are automatically members of the Club The Club does not charge membership dues exclusive of AAUM In general our club s region extends to a 50 mile radius around the city of Seattle U M alumni U M students and their parents and other supporters of U M who are not AAUM members are welcome and encouraged to participate in most club activities though they are not entitled to vote on club business or to serve on the Board of Directors The Club s primary funding is based on membership levels as well as our performance as judged by the AAUM Part of the role of our Club is to encourage AAUM membership while still remaining open and welcoming to all U M alumni and friends We must always remember that people participate in our club in order to connect with other U M alums whether or not they are members of the Alumni Association All local alumni and other interested parties are encouraged to join the Alumni Association https alumni umich edu membership join if they are not already members"
+    }, 
+    { 
+        title: "Board of Directors", 
+        date: "", 
+        url: "board-of-directors.html", 
+        summary: "<p>All of our local club operations are staffed by volunteers. The club is run by a Board of Directors, and this is a working board, as well as a governing body. </p>", 
+        content: "All of our local club operations are staffed by volunteers The club is run by a Board of Directors and this is a working board as well as a governing body Board members communicate regularly with each other during the month via email especially about any emergent issues that would be better handled without waiting for our next meeting The special email address board umseattle org mailto board umseattle org can be used to send an email to all current board members Note that Board Members are required to be active members of the AAUM As stated in the Club Bylaws > The role of the Board is to manage the affairs of the Club > > The general responsibilities of directors include > > + a serving as liaisons among the Club s leadership its members U M alumni current and prospective U M students AAUM U M and the community at large > + b representing the diverse interests of the general membership > + c assisting the Club s officers in the administration of the Club and in volunteer identification and recruitment > + d attending a majority of Board meetings in a given year > + e attending Club events on a regular basis and > + f contributing significantly to the work needed to sustain and improve the Club Our club website https alumni umich edu communities clubs u m club of seattle about seattle club leadership should list the current members of the club s board The AAUM also maintains a Google Sheet https docs google com spreadsheets d 1W1iiaZL0zLpEAcEvROH08oudEKs5Bn9oW4vAy9swKNM edit usp=drivesdk containing a current list of our board members"
+    }, 
+    { 
+        title: "Expectations for Board Members", 
+        date: "", 
+        url: "expectations-for-board-members.html", 
+        summary: "<p>We&#8217;re always looking for some of our local alumni to step up and become more involved in planning, organizing, communicating and hosting our local University of Michigan club events. </p>", 
+        content: "We re always looking for some of our local alumni to step up and become more involved in planning organizing communicating and hosting our local University of Michigan club events But what does it mean to become one of our local club leaders What will be expected of you Let me try to lay out some guidelines None of us will live up to all of these expectations all the time none of us are perfectly qualified and all of us have other interests and obligations but this is what we re shooting for 1 Show up at many or most of our club events The first step in helping to lead our club is to become an active participant in as many of our club events as you can 2 Actively engage with other alumni As one of our club leaders it s important to interact with other alums and to make them feel welcome at our events You don t need to greet everyone at the door but it s good to say Hi to some new faces and get to know a little bit about them at every event you attend 3 Figure out how you can help For every event we host someone has to work behind the scenes to plan and organize the event including arrangements for a venue group ticket sales nailing down dates and a few other details that typically vary depending on the type of event And then once we have an event planned others have to get the word out to our alums via our website our e mails our Facebook page and other communication channels again depending on the type of event And finally we need one or more hosts for each event 4 Work with others You will need to work effectively with a diverse group of other local alumni as well as Alumni Association personnel located back in Ann Arbor Some of them will be other volunteers working on weekends and evenings and others will be full time employees working nine to five back in Michigan Sometimes we ll be working together face to face but often we ll be communicating via e mail phone calls and text messages 5 Become a spokesperson for our club and our Alumni Association You don t have to give any speeches But you need to be willing to let people know that you re proudly representing our local alumni club and by extension our national Alumni Association 6 Invest yourself in the growth of our club We want you to feel a sense of ownership of our club and a sense of pride in our club s accomplishments And we want you to always be helping us look for that next step we can take to make our club even stronger and more effective than it s been so far We re not just here to keep things going we re here to continue growing in ways that will be ever more meaningful to our local alumni 7 Attend board and or committee meetings Depending on your currently assigned responsibilities you will be expected to attend relevant board and or committee meetings and inform the organizers of those events when you are unable to attend"
+    }, 
+    { 
+        title: "Officers", 
+        date: "", 
+        url: "officers.html", 
+        summary: "<p>As stated in the Club Bylaws: </p>  <blockquote>  <p>Four of the Club’s Directors shall serve as Officers of the Board in the following roles: <a href=\"president.html\" class=\"wiki-link\">President</a>, <a href=\"vice-president.html\" class=\"wiki-link\">Vice President</a>, <a href=\"secretary.html\" class=\"wiki-link\">Secretary</a>, and <a href=\"treasurer.html\" class=\"wiki-link\">Treasurer</a>. </p> </blockquote> ", 
+        content: "As stated in the Club Bylaws > Four of the Club s Directors shall serve as Officers of the Board in the following roles President Vice President Secretary and Treasurer The officers responsibilities include > > + setting overall strategy for the Club and > + leading efforts to revise these Bylaws as needed Note that the immediate past president of the club is generally referred to as the ex officio and typically serves in an advisory capacity to the new president and to the other officers"
+    }, 
+    { 
+        title: "Board Functions", 
+        date: "", 
+        url: "board-functions.html", 
+        summary: "<p>This section describes the various functions performed by the Board, including its committees and other delegates, with each function broken down into roles, tasks, and resources. </p>", 
+        content: "This section describes the various functions performed by the Board including its committees and other delegates with each function broken down into roles tasks and resources"
+    }, 
+    { 
+        title: "Administration", 
+        date: "", 
+        url: "administration.html", 
+        summary: "<p>A number of club functions are largely administrative in nature. These are routine items that must be carried out in order to maintain the club as a viable organization. </p>", 
+        content: "A number of club functions are largely administrative in nature These are routine items that must be carried out in order to maintain the club as a viable organization"
+    }, 
+    { 
+        title: "President", 
+        date: "", 
+        url: "president.html", 
+        summary: "<p>As stated in the Club Bylaws: </p>  <blockquote>  <p>In addition to the other responsibilities of Directors, the President shall: (a) propose an agenda for each Club meeting; (b) preside over each Club meeting; </p> </blockquote> ", 
+        content: "As stated in the Club Bylaws > In addition to the other responsibilities of Directors the President shall a propose an agenda for each Club meeting b preside over each Club meeting and c ultimately ensure that the Club meets all of its responsibilities to AAUM its members and to appropriate government agencies in a manner consistent with the content of these Bylaws"
+    }, 
+    { 
+        title: "Liaison with Related Organizations", 
+        date: "", 
+        url: "liaison-with-related-organizations.html", 
+        summary: "<p>Responsibility: Act as primary liaison with <a href=\"related-organizations.html\" class=\"wiki-link\">Related Organizations</a>, with AAUM being the primary such organization. </p>", 
+        content: "Responsibility Act as primary liaison with Related Organizations with AAUM being the primary such organization"
+    }, 
+    { 
+        title: "Preparation of Board Meeting Agendas", 
+        date: "", 
+        url: "preparation-of-board-meeting-agendas.html", 
+        summary: "", 
+        content: ""
+    }, 
+    { 
+        title: "Presiding over Board Meetings", 
+        date: "", 
+        url: "presiding-over-board-meetings.html", 
+        summary: "", 
+        content: ""
+    }, 
+    { 
+        title: "Creation of Annual Report", 
+        date: "", 
+        url: "creation-of-annual-report.html", 
+        summary: "<p>Responsibility: Creation and submission of the club&#8217;s annual report to the AAUM, with assistance from other officers as needed. </p>", 
+        content: "Responsibility Creation and submission of the club s annual report to the AAUM with assistance from other officers as needed"
+    }, 
+    { 
+        title: "Vice President", 
+        date: "", 
+        url: "vice-president.html", 
+        summary: "<p>As stated in the Club Bylaws: </p>  <blockquote>  <p>In addition to the other responsibilities of Directors, the Vice President shall assume the duties of the President whenever the President is unable to perform those duties. </p> </blockquote> ", 
+        content: "As stated in the Club Bylaws > In addition to the other responsibilities of Directors the Vice President shall assume the duties of the President whenever the President is unable to perform those duties"
+    }, 
+    { 
+        title: "Scheduling of Board Meetings", 
+        date: "", 
+        url: "scheduling-of-board-meetings.html", 
+        summary: "<p>Responsibility: scheduling of board meetings, including the club&#8217;s annual meeting, and any other special meetings of members. This responsibility includes setting dates and times, and coordinating with meeting venues. </p>", 
+        content: "Responsibility scheduling of board meetings including the club s annual meeting and any other special meetings of members This responsibility includes setting dates and times and coordinating with meeting venues"
+    }, 
+    { 
+        title: "Presiding over Board Meetings - backup", 
+        date: "", 
+        url: "presiding-over-board-meetings-backup.html", 
+        summary: "<p>The VP shall preside over board meetings in the absence of the president. </p>", 
+        content: "The VP shall preside over board meetings in the absence of the president"
+    }, 
+    { 
+        title: "Annual Government Reporting", 
+        date: "", 
+        url: "annual-government-reporting.html", 
+        summary: "<p>Responsibility: Submit annual reports to the state of Washington and to the Federal Government, with assistance from other officers, as needed. </p>", 
+        content: "Responsibility Submit annual reports to the state of Washington and to the Federal Government with assistance from other officers as needed"
+    }, 
+    { 
+        title: "Secretary", 
+        date: "", 
+        url: "secretary.html", 
+        summary: "<p>As stated in the Club Bylaws: </p>  <blockquote>  <p>In addition to the other responsibilities of Directors, the Secretary shall: (a) record minutes of each Club meeting; </p> </blockquote> ", 
+        content: "As stated in the Club Bylaws > In addition to the other responsibilities of Directors the Secretary shall a record minutes of each Club meeting b make these minutes available to Officers Directors and interested members no more than fourteen 14 days after each meeting and c assure that meeting minutes and other official Club documents are retained and preserved as part of the ongoing collection of Club records"
+    }, 
+    { 
+        title: "Notify Board Members of Meetings", 
+        date: "", 
+        url: "notify-board-members-of-meetings.html", 
+        summary: "<p>Responsibility: Communicate dates and times and locations of board meetings to board members. </p>", 
+        content: "Responsibility Communicate dates and times and locations of board meetings to board members"
+    }, 
+    { 
+        title: "Recording and Publication of Meeting Minutes", 
+        date: "", 
+        url: "recording-and-publication-of-meeting-minutes.html", 
+        summary: "<p>Responsibility: Record and publish minutes for all board meetings, including the annual meeting and any other special meetings. </p>", 
+        content: "Responsibility Record and publish minutes for all board meetings including the annual meeting and any other special meetings"
+    }, 
+    { 
+        title: "Treasurer", 
+        date: "", 
+        url: "treasurer.html", 
+        summary: "<p>As stated in the Club Bylaws: </p>  <blockquote>  <p>In addition to the other responsibilities of Directors, the Treasurer shall: (a) record all of the Club’s financial transactions; (b) maintain current and projected balances for the Club’s various accounts; </p> </blockquote> ", 
+        content: "As stated in the Club Bylaws > In addition to the other responsibilities of Directors the Treasurer shall a record all of the Club s financial transactions b maintain current and projected balances for the Club s various accounts c deposit transfer and disburse funds as necessary to conduct the Club s business and d make available such financial reports as may be needed by the Board the AAUM and the appropriate government agencies"
+    }, 
+    { 
+        title: "Maintenance of Bank Accounts", 
+        date: "", 
+        url: "maintenance-of-bank-accounts.html", 
+        summary: "", 
+        content: ""
+    }, 
+    { 
+        title: "Budgeting", 
+        date: "", 
+        url: "budgeting.html", 
+        summary: "<p>Responsibility: Overall responsibility for the club&#8217;s annual budget, including: </p> <ul> <li>Preparation of the budget, working with other officers and committee chairs; </li> <li>Advising the board on spending decisions, as they relate to the established budget; </li> </ul> ", 
+        content: "Responsibility Overall responsibility for the club s annual budget including + Preparation of the budget working with other officers and committee chairs + Advising the board on spending decisions as they relate to the established budget + Reporting to the board on ongoing adherence to the budget and any deviations from the budget + Modifications to the budget if needed and as approved by the board"
+    }, 
+    { 
+        title: "Bookkeeping", 
+        date: "", 
+        url: "bookkeeping.html", 
+        summary: "<p>Responsibility: Maintain the club&#8217;s financial records, including transaction history and account balances, and prepare such financial reports as needed by the board, AAUM and any other designated organizations. </p>", 
+        content: "Responsibility Maintain the club s financial records including transaction history and account balances and prepare such financial reports as needed by the board AAUM and any other designated organizations From the Club s Bylaws > The Club s fiscal year shall be July 1 through June 30 > > The Treasurer shall maintain records of all of the Club s financial transactions and make available such financial reports as needed by the Board the AAUM or by the appropriate government agencies"
+    }, 
+    { 
+        title: "Receipt and Depositing of Funds", 
+        date: "", 
+        url: "receipt-and-depositing-of-funds.html", 
+        summary: "", 
+        content: ""
+    }, 
+    { 
+        title: "Disbursement of Funds", 
+        date: "", 
+        url: "disbursement-of-funds.html", 
+        summary: "<p>Responsibility: Disburse funds as approved and authorized by the board. </p>", 
+        content: "Responsibility Disburse funds as approved and authorized by the board From the Club s Bylaws > All payments shall be signed or electronically approved by the Treasurer or the President or two officers if Treasurer or President are not available Approval requests from the Treasurer or President shall not be self approved"
+    }, 
+    { 
+        title: "Event Programming", 
+        date: "", 
+        url: "event-programming.html", 
+        summary: "<p>Responsibility: scheduling and hosting club events, including: </p> <ul> <li>Identification of Events </li> <li>Scheduling and Budgeting </li> <li>Calendar Management - Spreading out events to avoid conflicts, and to ensure a steady stream of interesting events </li> <li>Submitting&#8230; </li> </ul> ", 
+        content: "Responsibility scheduling and hosting club events including + Identification of Events + Scheduling and Budgeting + Calendar Management Spreading out events to avoid conflicts and to ensure a steady stream of interesting events + Submitting for Approval + Communicating to AAUM for posting on our website + Communicating needed info to MarCom"
+    }, 
+    { 
+        title: "Event Procedure", 
+        date: "", 
+        url: "event-procedure.html", 
+        summary: "<p>Most of the value that our club delivers to our local Michigan alums comes in the form of events of one sort or another that we organize for them, so it&#8217;s worthwhile spending some energy to make sure each event is a success. </p>", 
+        content: "Most of the value that our club delivers to our local Michigan alums comes in the form of events of one sort or another that we organize for them so it s worthwhile spending some energy to make sure each event is a success Following are the steps needed to plan and organize a successful club event 1 Define Event Purpose and Intended Audience Try to be clear minded about why U M alums might want to attend and what sort of U M alums would be interested 2 Select Date for Event This should generally be 60 90 days in the future for more complicated events and 30 60 days in the future for simpler events to allow adequate time for planning coordination and communication Select a date and time that doesn t conflict with other club events and doesn t conflict with other major events in the area Also consider seasonal factors Plan outdoors events when the weather is likely to be good and indoors events when the weather is likely to be less welcoming 3 Select Venue for Event You may wish to consider some of the following questions when selecting a venue Is it centrally located Is there a space where families with children can be seated Is parking available How expensive is it Is it easily accessible via public transit Is the event area private and free of distractions Can the space accommodate the desired number of participants Does the establishment have access to the Big Ten Network BTN Is there space for a registration table if one is needed What are the costs of food and beverage Is there audio visual equipment available if such equipment is needed What are costs considering food and drink etc Are there any minimums Are they per event or per hour Are there any additional taxes tips or fees that will be added on to the basic costs 4 Consider a Sponsor for the Event Although a sponsor is optional a local business may be willing to help defray some of the event costs in return for an opportunity to market itself to your participants See the AAUM Sponsorship Guidelines on the Club Leader s Site before selecting a sponsor 5 Estimate Income and Expenses for the Event Consider expenses such as facilities costs food beverages etc Consider income such as registration fees and possible sponsoring host Consider possible discounts for AAUM members and the amount needed to subsidize these discounts You may use the attached Budget Template to complete and total your estimates 6 Submit Event Proposal Your proposal should include all or most of the following information You may prepare your proposal by creating a new Event in the Planning Stage on our Website or by simply including this information in an email that you send to the board When Enter proposed date and time of the event What Enter a brief descriptive title for the event Where Enter the location of the event including the name and address of the venue Who Identify who is assigned to plan coordinate and host the event including contact info Why Enter the purpose of the event and why the club should hold it Teaser Enter two or three sentences describing the event Blurb Enter one or more paragraphs with additional details other than When and Where and Who Cost Enter the cost per person to attend the event including member and non member pricing Planned Income How much money will we receive for registration fees etc Planned Expense How much money will we need to spend Planned Attendance Enter the number of expected attendees Discussion points Highlight any questions or issues that merit further discussion by the board 7 Obtain Approval for Event The board should approve all club events before beginning any communications to members or any financial commitments by the club The first step in holding a successful event is picking an event worth holding None of the following guidelines are absolutes but all are worth considering before deciding to hold an event Positive Factors for an Event Here are some factors that bode well for a prospective event 1 A definite Michigan connection We sometimes host events that have no particular Michigan connection but those that feature a person or thing related to Michigan are particularly attractive to our members 2 Events that provide an opportunity for alums to meet and interact with each other 3 Events that one or more board members wish to attend 4 Events with some element of novelty something different that we haven t done before or haven t done recently 5 Repetition of a similar past event that proved to be successful perhaps with some interesting variation Negative Factors On the other hand here are some things to watch out for 1 Events that put the club at some significant financial risk In other words if we have to front money for an event and become dependent on having a certain number of alums attend in order to recoup our expenses then this is less attractive than events where participants pay as they go without any obligation on the club s part to have some minimum number of alums attend 2 Events without committed board attendance If board members are all supportive of having an event but no one on the board is actually excited enough about the event to actually attend then this is generally a pretty good indication that turnout will be low Other Considerations 1 It takes considerable time and effort to promote an event so even if an event can be held for free we may not want to invest the time to advertise it if it is likely to have little benefit for alums 2 If we promote events that draw few attendees then those that do show up may form a negative impression about our events and may be discouraged from attending other events that we hold 3 If we advertise events that are not attended by any board members then attendees may feel that we have broken faith with them by asking them to attend an event that we ourselves do not feel is worth attending 4 If we advertise events that are not attended by any board members then we do not have any control over the quality of the experience and we do not have a chance to obtain any direct feedback about the quality of the experience 8 Submit to AAUM Submit the event to AAUM for posting on our website using this form https umich qualtrics com jfe form SV 3jTSmCRrpscajml 9 Begin Promoting Event to Local Alums Send information to the MarCom team Send a Save the Date note through the club listserv May also wish to recruit additional volunteers through the club listserv 10 Recruit Speakers or Mentors if Needed Obtain biographies to be used in event promotion 11 Sign Contract for Venue Nail down date and facility costs Identify any food and drink to be paid for by the club Submit contract or firm email commitment to club treasurer and president for final review and approval 12 Continue Event Promotion Send additional information to the Marketing Communications team Communicate event details Start registration of attendees 13 Prepare for Event Confirm event agenda and facilitator speaking points Assign volunteer roles for day of event Gather event resources such as signs name tags pens table cloth etc Plan for final food and beverage quantities based on registration numbers Print AAUM career and club resources to market membership and programs If the event involves any degree of physical risk then print enough Participant Waiver of Responsibility Liability Release Forms so that all attendees can sign them 14 Register Attendees Have attendees sign the Participant Waiver Liability Release Forms if there is any degree of physical risk associated with the event 15 Complete Event Evaluation For all events complete an event recap 16 Send Receipts and Income to Club Treasurer The treasurer can make deposits record all financial transactions associated with the event and retain copies of all paperwork 17 Review Event Outcomes with Board Discuss the event at the next board meeting in order to share lessons learned"
+    }, 
+    { 
+        title: "General Calendar of Events", 
+        date: "", 
+        url: "general-calendar-of-events.html", 
+        summary: "<p>Following is a typical calendar of events for our Club. </p>", 
+        content: "Following is a typical calendar of events for our Club | Time of Year | Event Type | Notes | | | | | | Jul Aug | Student Send Off | Before students start leaving town | Sep Nov | Football Watch Parties | We host watch parties for all U M football games | Oct | Welcome Event | Frequently held on our bye week | Dec | | Holiday Season everyone s busy | Jan Apr | Culture | Good time for museum theatre etc | Feb Mar | Basketball Watch Parties | For key opponents when team is doing well | Mar Apr | Admitted Students Reception | For local high school students and parents | Apr May | Community Service Day | Hold on or around U M Commencement | May | Annual Meeting | Official Elections for our Board of Directors | Apr Sep | Mariners vs Tigers | Usually a popular event | Jun Aug | Summer Ice Cream Social | Good family event | Jun Jul | Summer Interns BBQ | For U M students visiting for summer | Jun Aug | Sounders game | Game against Portland is a good one"
+    }, 
+    { 
+        title: "MarCom - Marketing Communications", 
+        date: "", 
+        url: "marcom-marketing-communications.html", 
+        summary: "<p>The primary function of Marketing Communications (abbreviated &#8220;MarCom&#8221;) is to communicate our activities to local U-M alumni and to encourage their participation in these activities. </p>  <p>MarCom is an essential function for our club. </p>", 
+        content: "The primary function of Marketing Communications abbreviated MarCom is to communicate our activities to local U M alumni and to encourage their participation in these activities MarCom is an essential function for our club Successful communication can make the difference between a well attended event much appreciated by members and an expensive failure that no one attends Our club communications also project an image for our club Our club communications also help to make our local alums feel connected to each other and to the local club even for alums who attend few if any events Club officers have frequently observed that our alums appreciate feeling in the know as part of a large and active local U M community even if they rarely attend any of our events What this means is that our club communications do more than market our events they are actually deemed valuable in and of themselves The email address of marcom umseattle org mailto marcom umseattle org should forward to all current members of the MarCom team Members of the MarCom team are encouraged and authorized to edit any submitted content in order to meet their goals and guidelines"
+    }, 
+    { 
+        title: "Newsletter Editor", 
+        date: "", 
+        url: "newsletter-editor.html", 
+        summary: "<p>The responsibilities of the newsletter editor are to prepare and publish an email newsletter for our Club. </p>", 
+        content: "The responsibilities of the newsletter editor are to prepare and publish an email newsletter for our Club Our email newsletter is the most popular form of communication for our members based on surveys done in the past and on continuing anecdotal evidence Our emails go out to over 5 000 U M friends and alumni and a typical newsletter has over 1 000 unique opens Note that we start to advertise most events at least a month before they will occur and that as a result most events appear in multiple newsletter editions We use the Alumni Association Listserv to send out our email newsletters"
+    }, 
+    { 
+        title: "Newsletter Inputs", 
+        date: "", 
+        url: "newsletter-inputs.html", 
+        summary: "<p>The newsletter editor will use input from the following sources. </p>", 
+        content: "The newsletter editor will use input from the following sources + Upcoming Events listed on our Club Events Calendar https alumni umich edu communities clubs u m club of seattle upcoming events calendar + Other items submitted by AAUM and or other board members"
+    }, 
+    { 
+        title: "Newsletter Editorial Guidelines", 
+        date: "", 
+        url: "newsletter-editorial-guidelines.html", 
+        summary: "<p>The newsletter editor should observe the following guidelines. </p> <ul> <li>Send out no more than one email per week. </li> <li>Only send out an email when we have something new to communicate &#8211; avoid sending out the exact same email twice. </li> </ul> ", 
+        content: "The newsletter editor should observe the following guidelines Send out no more than one email per week Only send out an email when we have something new to communicate avoid sending out the exact same email twice Keep each email to roughly a single page Include 3 7 items in each email we send out Less than 3 and recipients may view the email as too narrowly focused more than 7 and recipients may view the email as too long Make sure each item is potentially interesting to at least some local alums Recipients can fairly be expected to skip over items that don t appeal to them but would appeal to others but should not be expected to read items that will be of little interest to any of them Put the items in chronological order so the ones that are closest appear at the top of the list Include only a brief teaser 2 3 sentences for most items with links to the corresponding page on our website for those interested in further information Include full details for no more than one item per email and then only once per event and only for events receiving a major focus Try to be professional as opposed to folksy We serve a large and diverse audience and we should not assume that we know all of them or that the same style will appeal to all of them Avoid an overly intimate or haranguing tone Instead try to provide useful information in a neutral tone Always make recipients feel welcome as part of our community whether they attend any particular event or not Use a consistent format that is easy to scan and read Use the subject line of the email to highlight some of that newsletter s particular content Be inclusive in wording don t presume that some events will only appeal to certain types of people or to a certain club demographic"
+    }, 
+    { 
+        title: "Newsletter Publishing Cycle", 
+        date: "", 
+        url: "newsletter-publishing-cycle.html", 
+        summary: "<p>The newsletter is generally sent out every week. </p>  <p>This is the normal publishing cycle. </p>", 
+        content: "The newsletter is generally sent out every week This is the normal publishing cycle | Days of Week | Activity | | | | | Thu Sat | Input is sent to newsletter editor | Sunday | Editor publishes first draft for interested recipients | | Sun Tue am | Feedback is provided and further drafts published if needed | | Tue pm | Editor finalizes newsletter and schedules it to go out | | Wed 10 00 am | Newsletter is published |"
+    }, 
+    { 
+        title: "Newsletter Resources", 
+        date: "", 
+        url: "newsletter-resources.html", 
+        summary: "<p>The AAUM provides us with a tool called Salesforce Marketing Cloud in order to prepare and publish our email newsletters. </p>  <p>This is a licensed product which charges the AAUM some cost per seat (aka user) for use of the package. </p>", 
+        content: "The AAUM provides us with a tool called Salesforce Marketing Cloud in order to prepare and publish our email newsletters This is a licensed product which charges the AAUM some cost per seat aka user for use of the package Our Club has been allocated two seats for use of this product"
+    }, 
+    { 
+        title: "AAUM Instructions for Using Marketing Cloud", 
+        date: "", 
+        url: "aaum-instructions-for-using-marketing-cloud.html", 
+        summary: "<p>See the link for the latest AAUM Club Leader Resources on use of Salesforce Marketing Cloud to send out Email newsletters. </p>", 
+        content: "See the link for the latest AAUM Club Leader Resources on use of Salesforce Marketing Cloud to send out Email newsletters"
+    }, 
+    { 
+        title: "Alumni Data Compliance Policy", 
+        date: "", 
+        url: "alumni-data-compliance-policy.html", 
+        summary: "<p>In order to gain access to Salesforce Marketing Cloud, a club volunteer will first need to submit this form. </p>", 
+        content: "In order to gain access to Salesforce Marketing Cloud a club volunteer will first need to submit this form"
+    }, 
+    { 
+        title: "Marketing Cloud Login Page", 
+        date: "", 
+        url: "marketing-cloud-login-page.html", 
+        summary: "<p>This is the URL for entry into the Salesforce Marketing Cloud Email tool. </p>  <p>Use of the Chrome web browser is highly recommended. </p>  <p>Note that this tool is often referred to as our <a href=\"https://en.wikipedia.org/wiki/LISTSERV\" class=\"ext-link\" target=\"_blank\" rel=\"noopener\">listserv</a>. </p>", 
+        content: "This is the URL for entry into the Salesforce Marketing Cloud Email tool Use of the Chrome web browser is highly recommended Note that this tool is often referred to as our listserv https en wikipedia org wiki LISTSERV"
+    }, 
+    { 
+        title: "Social Media Coordinator", 
+        date: "", 
+        url: "social-media-coordinator.html", 
+        summary: "", 
+        content: ""
+    }, 
+    { 
+        title: "Website Admin", 
+        date: "", 
+        url: "website-admin.html", 
+        summary: "<p>Responsibility: update the relatively static (non-event) pages of the club&#8217;s website. </p>  <p>Note that the transient event pages are updated as part of <a href=\"event-programming.html\" class=\"wiki-link\">Event Programming</a>. </p>", 
+        content: "Responsibility update the relatively static non event pages of the club s website Note that the transient event pages are updated as part of Event Programming"
+    }, 
+    { 
+        title: "Board Recruiting", 
+        date: "", 
+        url: "board-recruiting.html", 
+        summary: "<p>Responsibility: Recruiting of new board members, both to fill specific positions, and also to populate a pool of board members ready to be assigned to appropriate roles as needed. </p>", 
+        content: "Responsibility Recruiting of new board members both to fill specific positions and also to populate a pool of board members ready to be assigned to appropriate roles as needed"
+    }, 
+    { 
+        title: "Brief Club Overview", 
+        date: "", 
+        url: "brief-club-overview.html", 
+        summary: "<p>This page is meant to be used by a board member when meeting with a prospective board member, to give them a brief overview of club operations. </p>  <p>This should generally follow some brief exchange of introductions, including U-M stories. </p>", 
+        content: "This page is meant to be used by a board member when meeting with a prospective board member to give them a brief overview of club operations This should generally follow some brief exchange of introductions including U M stories These are meant to be used as notes not to be read verbatim by either current or prospective board members + Club Status The Club is a 501 c 3 nonprofit registered in the state of Washington We are affiliated with and supported by the national Alumni Association The bulk of our club funding comes from the AAUM which is in turn funded largely by membership dues All board members must be AAUM members The Seattle club is over 100 years old and is the oldest U M alumni club outside of the state of Michigan We are a very active and well respected club within the Michigan network You can find out more at our website at umseattle org + Nature of the Board The club is run by an all volunteer board of directors aided by some subcommittees The board consists of 8 20 directors including four officers president vp secretary and treasurer Board members are generally elected at our annual meeting of members generally held in May but may be approved by the board throughout the year The board generally meets monthly over dinner often on the 3rd Tuesday of the month It is a working board not simply a governing body + Club Operations Administration scheduling and conducting meetings recording and publishing minutes tracking our finances Watch parties we have one in Seattle and one on the Eastside for all football games Club merchandise T Shirts sweatshirts caps etc Community Service events we try to have several of these throughout the year Other club events hikes cultural outings social events etc Scholarship fund raising and selection of scholarship recipients Liaison with local high school students either considering Michigan or enrolled and preparing to start their first year Marketing Communications MarCom weekly email newsletter plus social media + Potential Next Steps Talk to other board members Attend a board meeting Select one or more focus areas"
+    }, 
+    { 
+        title: "Incomplete - Needs Further Categorization", 
+        date: "", 
+        url: "incomplete-needs-further-categorization.html", 
+        summary: "<p>Note that some of the responsibilities assigned to the various officers of the board within this document are fixed, while others are variable (VAR), and may shift from one officer to another, in any fashion that is agreeable to the Board. </p>", 
+        content: "Note that some of the responsibilities assigned to the various officers of the board within this document are fixed while others are variable VAR and may shift from one officer to another in any fashion that is agreeable to the Board Responsibilities are assumed to be fixed unless otherwise specified All necessary responsibilities should always be assigned to one officer or another though to assure accountability Officers are empowered and encouraged to delegate responsibilities to other available Directors either singly or as teams or as committees and to name committee chairs as needed"
+    }, 
+    { 
+        title: "Functions - old", 
+        date: "", 
+        url: "functions-old.html", 
+        summary: "<p>The Club performs the following general functions. </p> <ul> <li>Club Operations &#8211; Board meetings, agendas, minutes, finances, club records, etc. </li> </ul> ", 
+        content: "The Club performs the following general functions Club Operations Board meetings agendas minutes finances club records etc MarCom Marketing Communications Communications to local U M alumni and fans about events and other items of local interest Leadership Development Acquisition onboarding development and retention of club leaders Membership Recruiting and retaining AAUM members Programming Planning and organizing events for local alums These events fall into the following categories Active Outdoors Career Development Collaboration with other Clubs such as other Big Ten clubs in the area Community Service Culture Family Social Welcome to alums new to the area Scholarship Awards Scholarship Fund Raising aka Development Sports Watching Coordinating with our sports watching locations and hosting these events Student Connections with prospective and current students from the area"
+    }, 
+    { 
+        title: "Monitor Club Inbox (VAR)", 
+        date: "", 
+        url: "monitor-club-inbox-var.html", 
+        summary: "<p>Monitor the club&#8217;s general email accounts, either reponding directly to any inquiries, or working with other board members to identify an appropriate party to respond. </p>", 
+        content: "Monitor the club s general email accounts either reponding directly to any inquiries or working with other board members to identify an appropriate party to respond"
+    }, 
+    { 
+        title: "Game Watch Parties (VAR)", 
+        date: "", 
+        url: "game-watch-parties-var.html", 
+        summary: "<p>Responsibility: locate venue, communicate with venue, host watch parties. </p>", 
+        content: "Responsibility locate venue communicate with venue host watch parties"
+    }, 
+    { 
+        title: "Administration of Club Docs", 
+        date: "", 
+        url: "administration-of-club-docs.html", 
+        summary: "<p>Responsibility: Storing and organizing club documents, including meeting minutes, as well as any and all other documents needed to conduct club operations. </p>", 
+        content: "Responsibility Storing and organizing club documents including meeting minutes as well as any and all other documents needed to conduct club operations"
+    }, 
+    { 
+        title: "Management of Web Domain Names (VAR)", 
+        date: "", 
+        url: "management-of-web-domain-names-var.html", 
+        summary: "<p>The club currently owns two domain names: </p> <ul> <li>umseattle.org </li> <li>umseattle.com </li> </ul>  <p>The domain names should redirect to our primary page on the AAUM site. </p>", 
+        content: "The club currently owns two domain names + umseattle org + umseattle com The domain names should redirect to our primary page on the AAUM site Email addresses using these domain names may also be maintained in order to ease email communication primarily by forwarding function names to one or more individuals currently assigned to perform those functions Domain Name Registrar Our domain name registrar is hover https hover com Our club has its own account there with a User ID of umseattle We need to renew our domain names on an annual basis Shared Web Hosting In order to easily do all this someone on the board needs to have a shared web hosting account that we can use We are currently using Herb s account and he uses A2 Hosting https www a2hosting com"
+    }, 
+    { 
+        title: "Scholarship Awards (VAR)", 
+        date: "", 
+        url: "scholarship-awards-var.html", 
+        summary: "<p>Responsibility: communication with U-M Admissions and with U-M students in regards to the club scholarship; </p>", 
+        content: "Responsibility communication with U M Admissions and with U M students in regards to the club scholarship selection of students to receive awards"
+    }, 
+    { 
+        title: "Local High School Relations (VAR)", 
+        date: "", 
+        url: "local-high-school-relations-var.html", 
+        summary: "<p>Responsibility: Maintain relations with Alumni Student Relations (ASR) members, and organize events for potential incoming U-M students:&#8230; </p>", 
+        content: "Responsibility Maintain relations with Alumni Student Relations ASR members and organize events for potential incoming U M students"
+    }, 
+    { 
+        title: "Admitted Students Reception", 
+        date: "", 
+        url: "admitted-students-reception.html", 
+        summary: "", 
+        content: ""
+    }, 
+    { 
+        title: "Student Sendoff", 
+        date: "", 
+        url: "student-sendoff.html", 
+        summary: "", 
+        content: ""
+    }, 
+    { 
+        title: "Community Service Events (VAR)", 
+        date: "", 
+        url: "community-service-events-var.html", 
+        summary: "<p>Responsibility: Schedule and host community service events. </p>", 
+        content: "Responsibility Schedule and host community service events"
+    }, 
+    { 
+        title: "Scholarship Fundraising (VAR)", 
+        date: "", 
+        url: "scholarship-fundraising-var.html", 
+        summary: "", 
+        content: ""
+    }, 
+    { 
+        title: "Club Merchandise (VAR)", 
+        date: "", 
+        url: "club-merchandise-var.html", 
+        summary: "<p>Responsibility: Preparation of club merchandise for sale to members, including coordination of design and liaison with vendor(s). </p>", 
+        content: "Responsibility Preparation of club merchandise for sale to members including coordination of design and liaison with vendor s"
+    }, 
+    { 
+        title: "Student Connections", 
+        date: "", 
+        url: "student-connections.html", 
+        summary: "<p>One of the important functions of our club is to connect with prospective and current U-M students. Following are the primary activities we perform in this area. </p>", 
+        content: "One of the important functions of our club is to connect with prospective and current U M students Following are the primary activities we perform in this area Other Student Recruiting Activities Again Michael Tarlowe recounts some of his thoughts and experiences > Time permitting I would also sometimes request a full roster in mid April and reach out via email to any kids who have been accepted but not yet enrolled from schools where we don t have an ASR who adopted it I believe we have all schools deemed priority by Ann Arbor adopted by an ASR but there are always admitted students from schools not listed so if time allows it is nice to reach out to those kids like the ASRs do for adopted schools > > Because the Admissions Office rarely sends out a counselor to visit the local high schools ideally we d have alumni do these visits It can be tough since they are during the day but this is an area of opportunity that I wasn t able to pursue as aggressively as I would have liked > > One year we convinced the Admissions Office to send out a counselor and we organized a breakfast which we invited all of the local high school career counselors to Pauline helped me put this together I thought it went very well as we had a good turnout and the counselors were very engaged asking lots of questions It might be worthwhile to have this on your radar at some point in the next year or two"
+    }, 
+    { 
+        title: "Alumni Student Recruitment", 
+        date: "", 
+        url: "alumni-student-recruitment.html", 
+        summary: "<p>The Alumni Student Recruitment (ASR) program is a partnership between the Alumni Association and the University. </p>", 
+        content: "The Alumni Student Recruitment ASR program is a partnership between the Alumni Association and the University See the Alumni Student Recruitment https alumni umich edu volunteer alumni student recruitment page on the AAUM site for more info Here s an example of a response from an actual student who had talked to an ASR rep > I wanted to thank you for taking the time to talk with me about the University of Michigan > > I enjoyed talking with you about your experiences on campus It was clear to me that your passions for the Maize and Blue still run deep After our conversation as I drove home I reflected on our discussion and really admire the excitement and dedication you have for your alma mater > > Further after our discussion it reinforced to me that the University of Michigan was the school for me > > When I read your email saying that you had checked in with Admissions and gave me a name Delphine to contact in order to ensure the school understood that Michigan was my top choice school I jumped at the chance > > I wrote her a mail this evening and plan on following up to ensure that the school realizes how badly I want to be a Wolverine > > Thank you for the time you spent with me for the motivation you gave me and for the contact you provided me with I greatly appreciate each of them and am hoping to see you soon as a confirmed University of Michigan admitted student > > Go Blue Couldn t make up stuff like this if we tried"
+    }, 
+    { 
+        title: "Admitted Students Reception 1", 
+        date: "", 
+        url: "admitted-students-reception-1.html", 
+        summary: "<p>The Admissions Office recommends holding these in late March or early April. Key is to try to avoid spring breaks at key high schools that would dampen attendance. </p>", 
+        content: "The Admissions Office recommends holding these in late March or early April Key is to try to avoid spring breaks at key high schools that would dampen attendance A few weeks before the event we would request a full roster for the state of WA of all admitted students We would then send email invitations to all admitted students in the area and also ask all local ASR reps to follow up with personal emails to admitted students at their schools Michael Tarlowe our long time coordinator in this area says > One of the things I enjoyed the most about this part was offering students the opportunity to connect with a current UM student from our area if they were planning to visit campus Many students took me up on this and provided feedback that it was very helpful So I d recommend keeping up this tradition both for students that attend the event as well as ones that seem interested but cannot make it Of course it does mean you will have to maintain a short list of what I referred to as Ambassadors current UM students from our area that are willing to meet with kids"
+    }, 
+    { 
+        title: "Student Sendoff 1", 
+        date: "", 
+        url: "student-sendoff-1.html", 
+        summary: "<p>We generally try to hold an event in July or August to congratulate and celebrate our incoming freshmen from the area, as well as their parents, and to give them a chance to connect with each other before heading off to Ann Arbor. </p>", 
+        content: "We generally try to hold an event in July or August to congratulate and celebrate our incoming freshmen from the area as well as their parents and to give them a chance to connect with each other before heading off to Ann Arbor We should coordinate with the Office of University Development for this event since they sometimes host these or can help find a local host This is also an opportunity to let both students and parents know about our local club as well as our club scholarship"
+    }, 
+    { 
+        title: "Other Student Recruiting Activities", 
+        date: "", 
+        url: "other-student-recruiting-activities.html", 
+        summary: "<p>Again, Michael Tarlowe recounts some of his thoughts and experiences: </p>  <blockquote>  <p>Time permitting, I would also sometimes request a full roster in mid-April and reach out via email to any kids who have been accepted but not yet enrolled, from schools where&#8230; </p> </blockquote> ", 
+        content: "Again Michael Tarlowe recounts some of his thoughts and experiences > Time permitting I would also sometimes request a full roster in mid April and reach out via email to any kids who have been accepted but not yet enrolled from schools where we don t have an ASR who adopted it I believe we have all schools deemed priority by Ann Arbor adopted by an ASR but there are always admitted students from schools not listed so if time allows it is nice to reach out to those kids like the ASRs do for adopted schools > > Because the Admissions Office rarely sends out a counselor to visit the local high schools ideally we d have alumni do these visits It can be tough since they are during the day but this is an area of opportunity that I wasn t able to pursue as aggressively as I would have liked > > One year we convinced the Admissions Office to send out a counselor and we organized a breakfast which we invited all of the local high school career counselors to Pauline helped me put this together I thought it went very well as we had a good turnout and the counselors were very engaged asking lots of questions It might be worthwhile to have this on your radar at some point in the next year or two"
+    }, 
+    { 
+        title: "Reference", 
+        date: "", 
+        url: "reference.html", 
+        summary: "", 
+        content: ""
+    }, 
+    { 
+        title: "Org Identifiers", 
+        date: "", 
+        url: "org-identifiers.html", 
+        summary: "<p>Name: University of Michigan Club of Seattle </p>  <p>Date of Incorporation: 04/11/2017 </p>  <p>UBI Number: 604-115-028 </p>  <p>PAC Code: U453794N </p>  <p>EIN/Tax ID Number: 82-1222894 </p>  <p>TechSoup Association Code:&#8230; </p>", 
+        content: "Name University of Michigan Club of Seattle Date of Incorporation 04 11 2017 UBI Number 604 115 028 PAC Code U453794N EIN Tax ID Number 82 1222894 TechSoup Association Code 8212 TTLE 1Q5C"
+    }, 
+    { 
+        title: "Taxes", 
+        date: "", 
+        url: "taxes.html", 
+        summary: "<h2 id=\"state-taxes\">State Taxes</h2>  <p>The state of Washington does not provide a blanket sales tax exemption for nonprofit organizations. </p>  <p>However WAC 458-20-169 does identify certain sources of nonprofit income as being exempt from tax in Section 5. </p>", 
+        content: " State Taxes The state of Washington does not provide a blanket sales tax exemption for nonprofit organizations However WAC 458 20 169 1 does identify certain sources of nonprofit income as being exempt from tax in Section 5 In section 5 g Fund Raising is identified as being exempt from B O tax and retail sales tax under certain conditions Sales would not qualify under this exemption if it was carried out at a regular place of business and at regularly scheduled hours They would also not be exempt if sales were being done by paid staff members However in cases such as ours when sales occur irregularly and are conducted by volunteers and occur outside of an established place of business for our organization such sales seem to qualify under the fund raising exemption Based on this guidance we report No Business Activity when required to submit our WA State Combined Excise Tax Return 1 http apps leg wa gov wac default aspx cite=458 20 169"
+    }, 
+    { 
+        title: "Articles of Incorporation", 
+        date: "", 
+        url: "articles-of-incorporation.html", 
+        summary: "<p>The following Articles of Incorporation have been filed with the Office of the Secretary of State in the state of Washington. </p>", 
+        content: "The following Articles of Incorporation have been filed with the Office of the Secretary of State in the state of Washington Name University of Michigan Club of Seattle Tenure Perpetual Purpose of Corporation The Club is an affiliate of and chartered by the Alumni Association of the University of Michigan AAUM an educational nonprofit membership organization of graduates and friends of the University of Michigan U M The club and AAUM bring alumni together in support of each other and to promote U M s objectives through the establishment and maintenance of contact among U M its graduates and present and prospective students Effective Date of Incorporation April 11 2017 Distribution of Assets Upon the dissolution of the corporation assets shall be distributed for one or more exempt purposes within the meaning of section 501 c 3 of the Internal Revenue Code or the corresponding section of any future federal tax code or shall be distributed to the Alumni Association of the University of Michigan or the federal government or to a state or local government for a public purpose"
+    }, 
+    { 
+        title: "Detailed Table of Contents", 
+        date: "", 
+        url: "detailed-table-of-contents.html", 
+        summary: "<p>{:outline-bullets}&#8230; </p>", 
+        content: " outline bullets collection toc 2 4"
+    }, 
+    { 
+        title: "Index of Key Terms", 
+        date: "", 
+        url: "index-of-key-terms.html", 
+        summary: "<p>{:index}&#8230; </p>", 
+        content: " index"
+    }, 
+    { 
+        title: "Links", 
+        date: "", 
+        url: "links.html", 
+        summary: "<p>Following are links to various online resources of interest to Club Leaders. </p> <ul> <li><p><a href=\"https://alumni.umich.edu\" class=\"ext-link\" target=\"_blank\" rel=\"noopener\">Alumni Association</a> </p></li> <li><p><a href=\"https://umich.qualtrics.com/jfe/form/SV_3jTSmCRrpscajml\" class=\"ext-link\" target=\"_blank\" rel=\"noopener\">Alumni Association Event Submission</a> </p></li> <li><p>[Alumni Association&#8230; </p></li> </ul> ", 
+        content: "Following are links to various online resources of interest to Club Leaders Alumni Association https alumni umich edu Alumni Association Event Submission https umich qualtrics com jfe form SV 3jTSmCRrpscajml Alumni Association Listserv https mc exacttarget com Alumni Student Recruitment http alumni umich edu volunteer alumni student recruitment Club Leader Resources https alumni umich edu communities clubs club affiliate leader resources Club Leaders Workshop https docs google com document d 1h4ixNvnUO3KBS1Y4FUt05QwGMB3AYvA1Z7xg0AWJ4fs edit Event Submission Form https umich qualtrics com jfe form SV 3jTSmCRrpscajml Event Numbers https clubs dev alumni umich edu home php Post Event Survey https docs google com forms d e 1FAIpQLSe23vgxSKcAHhMoLY 2sjkNqfrSjeCwlVqiHobFtCR6 O jug viewform QuickBooks Online https qbo intuit com Ross Seattle Club http www bus umich edu MyiMpact Clubs Seattle Sign In Sheets https drive google com open id=0B VJF2wxOyNebVotSVFuZ2kwNVE UM Seattle Board Roster https docs google com spreadsheets d 1W1iiaZL0zLpEAcEvROH08oudEKs5Bn9oW4vAy9swKNM edit usp=drivesdk UM Seattle Facebook Page https www facebook com umseattle UM Seattle LinkedIn Group https www linkedin com groups 3811298 UM Seattle Twitter Feed https twitter com umseattle UM Seattle Website http www umseattle com Umpqua Bank http www umpquabank com"
+    }, 
+    { 
+        title: "Search", 
+        date: "", 
+        url: "search.html", 
+        summary: "<p>{:search}&#8230; </p>", 
+        content: " search"
+    }, 
+    { 
+        title: "nav-element", 
+        date: "", 
+        url: "nav-element.html", 
+        summary: "<ul> <li><a href=\"detailed-table-of-contents.html\" class=\"wiki-link\">ToC</a> </li> <li><a href=\"index-of-key-terms.html\" class=\"wiki-link\">Index</a> +&#8230; </li> </ul> ", 
+        content: " nav + Detailed Table of Contents|ToC + Index of Key Terms|Index + Search"
+    }, 
+]; 
+/**
+ * Based on Go Make Things blog post at:
+ * https://gomakethings.com/how-to-create-a-vanilla-js-search-page-for-a-static-website/
+ */
+(function (window, document, undefined) {
+
+    'use strict';
+
+    //
+    // Variables
+    //
+
+    let form = document.querySelector('#form-search');
+    let input = document.querySelector('#input-search');
+    let resultList = document.querySelector('#search-results');
+
+    //
+    // Methods
+    //
+
+    /**
+     * Create the HTML for each result
+     * @param  {Object} article The article
+     * @param  {Number} id      The result index
+     * @return {String}         The markup
+     */
+    let createHTML = function (article, id) {
+        let html =
+            '<div id="search-result-' + id + '">' +
+                '<h4>' +
+                    '<a href="' + article.url + '" class="nav-link">' +
+                        article.title +
+                    '</a>' +
+                '</h2>' +
+                article.summary + '<br>' +
+            '</div>';
+        return html;
+    };
+
+    /**
+     * Create the markup for results
+     * @param  {Array} results The results to display
+     * @return {String}        The results HTML
+     */
+    let createResultsHTML = function (results) {
+        let html = '<p>Found ' + results.length + ' matching pages</p>';
+        html += results.map(function (article, index) {
+            return createHTML(article, index);
+        }).join('');
+        return html;
+    };
+
+    /**
+     * Create the markup when no results are found
+     * @return {String} The markup
+     */
+    let createNoResultsHTML = function () {
+        return '<p>Sorry, no matches were found.</p>';
+    };
+
+    /**
+     * Search for matches
+     * @param  {String} query The term to search for
+     */
+    let search = function (query) {
+
+        // Variables
+        let reg = new RegExp(query, 'gi');
+        let priority1 = []
+        let priority2 = []
+
+        searchIndex.forEach(function (article) {
+            if (reg.test(article.title)) return priority1.push(article);
+            if (reg.test(article.content)) priority2.push(article);
+        });
+
+        let results = [].concat(priority1, priority2)
+
+        // Display the results
+        resultList.innerHTML = results.length < 1 ? createNoResultsHTML() : createResultsHTML(results);
+    };
+
+    /**
+     * Handle submit events
+     */
+    let submitHandler = function (event) {
+        event.preventDefault();
+        search(input.value);
+    };
+
+    //
+    // Inits & Event Listeners
+    //
+
+    // Make sure required content exists
+    if (!form || !input || !resultList || !searchIndex) return;
+
+    // Create a submit handler
+    form.addEventListener('submit', submitHandler);
+
+})(window, document);
+
+</script>
+
+
+
+<hr />
+<p>Back to Top: <a href="u-m-seattle-operations-guide.html" class="nav-link">U-M Seattle Operations Guide</a></p>
+
+</main>
+</body>
+</html>
